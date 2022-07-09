@@ -1,0 +1,37 @@
+PODS:
+  - AppCenter (4.4.2):
+    - AppCenter/Analytics (= 4.4.2)
+    - AppCenter/Crashes (= 4.4.2)
+  - AppCenter/Analytics (4.4.2):
+    - AppCenter/Core
+  - AppCenter/Core (4.4.2)
+  - AppCenter/Crashes (4.4.2):
+    - AppCenter/Core
+  - lottie-ios (3.2.3)
+  - ReactiveSwift (6.6.0)
+  - SDWebImage (5.11.1):
+    - SDWebImage/Core (= 5.11.1)
+  - SDWebImage/Core (5.11.1)
+
+DEPENDENCIES:
+  - AppCenter
+  - lottie-ios
+  - ReactiveSwift (~> 6.1)
+  - SDWebImage (~> 5.0)
+
+SPEC REPOS:
+  trunk:
+    - AppCenter
+    - lottie-ios
+    - ReactiveSwift
+    - SDWebImage
+
+SPEC CHECKSUMS:
+  AppCenter: b0eca112a27b71e97488ffa1949ee38c7abd4b79
+  lottie-ios: c058aeafa76daa4cf64d773554bccc8385d0150e
+  ReactiveSwift: be9407e2aaf8a11e53a5229255693cffd9a63ccf
+  SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
+
+PODFILE CHECKSUM: 8e8f7c55f964e440048e79ff670d35b12818d1ae
+
+COCOAPODS: 1.11.3
