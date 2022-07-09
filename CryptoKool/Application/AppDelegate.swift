@@ -6,12 +6,21 @@
 //
 
 import UIKit
+import AppCenter
+import AppCenterAnalytics
+import AppCenterCrashes
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         CKLog.info(message: "didFinishLaunchingWithOptions...")
+        
+        AppCenter.start(withAppSecret: "bae9c1d0-10a9-4326-ac87-1106a0a4626b", services:[
+          Analytics.self,
+          Crashes.self
+        ])
+        
         try! FileManager.default.removeItem(atPath: NSHomeDirectory()+"/Library/SplashBoard")
         
         do {
