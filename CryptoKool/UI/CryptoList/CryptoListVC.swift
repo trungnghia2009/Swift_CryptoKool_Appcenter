@@ -103,7 +103,7 @@ final class CryptoListVC: UITableViewController {
                                                            style: .done,
                                                            target: self,
                                                            action: #selector(didTapLeftBarButton))
-        //navigationItem.leftBarButtonItem?.isEnabled = false
+        navigationItem.leftBarButtonItem?.isEnabled = false
     }
     
     private func setTableView() {
