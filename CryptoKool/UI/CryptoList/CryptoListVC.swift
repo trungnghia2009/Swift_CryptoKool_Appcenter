@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import AppCenterCrashes
+import AppCenterAnalytics
 
 final class CryptoListVC: UITableViewController {
     
@@ -54,6 +56,9 @@ final class CryptoListVC: UITableViewController {
         super.viewDidLoad()
         viewModel = CryptoListVM(service: cryptoService)
         viewModel?.fetchCryptoList()
+        if Crashes.hasCrashedInLastSession {
+            showCrashPopup()
+        }
         setupNavigationBar()
         setTableView()
         setupPullToRefresh()
@@ -130,10 +135,16 @@ final class CryptoListVC: UITableViewController {
         timer = nil
     }
     
+    private func showCrashPopup() {
+        let alert = UIAlertController(title: "CrytoKool just crashed!", message: "Sorry about that, an error occured", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "It's cool", style: .default, handler: nil))
+        present(alert, animated: true)
+    }
     
     // MARK: Selectors
     @objc private func didTapRightBarButton() {
         CKLog.info(message: "Did tap right bar button")
+        Analytics.trackEvent("tap_info_button")
         navigationController?.pushViewController(InformationScreen(), animated: true)
     }
     
@@ -144,6 +155,7 @@ final class CryptoListVC: UITableViewController {
     
     @objc private func didTapSearchButton() {
         CKLog.info(message: "Did tap search button")
+        Analytics.trackEvent("tap_search_button")
         let cryptoSearchVM = CryptoSearchVM(service: cryptoService)
         navigationController?.pushViewController(CryptoSearchVC(viewModel: cryptoSearchVM), animated: true)
     }
@@ -180,6 +192,7 @@ extension CryptoListVC {
         guard let viewModel = viewModel else { return }
         let selectedItem = viewModel.cryptoAtIndex(indexPath.row)
         CKLog.info(message: "Did tap item with id: \(selectedItem.id)")
+        Analytics.trackEvent("tap_cell_at_\(selectedItem.name)")
         
         let storyboard = UIStoryboard(name: "CryptoDetailVC", bundle: Bundle.main)
         guard let controller = storyboard.instantiateViewController(withIdentifier: "CryptoDetailVC") as? CryptoDetailVC else {
