@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         CKLog.info(message: "didFinishLaunchingWithOptions...")
         
-        AppCenter.start(withAppSecret: "bae9c1d0-10a9-4326-ac87-1106a0a4626b", services:[
+        AppCenter.start(withAppSecret: "e9636479-dac4-4a78-b5b9-02b460082151", services:[
           Analytics.self,
           Crashes.self
         ])
